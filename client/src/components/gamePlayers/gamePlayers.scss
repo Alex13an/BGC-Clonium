@@ -1,0 +1,59 @@
+.game-players {
+	color: #F1FFE7;
+	margin-left: 1%;
+	&__container {
+		border-radius: 5px;
+		background: #0984e3;
+		width: 200px;
+		margin: 10px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding: 15px;
+		transition: background 0.4s ease;
+		position: relative;
+		@media (width < 900px) {
+			padding: 8px 20px;
+			width: 250px;
+		}
+		&_active {
+			background: #00b894;
+			transition: background 0.4s ease;
+		}
+		&_defeat {
+			background: #ED5464;
+			opacity: 0.4;
+		}
+	}
+	&__name {
+		&_active {
+			font-weight: bold;
+			&::after {
+				content: "";
+				display: block;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				right: -20px;
+				width: 0;
+				height: 0;
+				border-top: 10px solid transparent;
+				border-bottom: 10px solid transparent;
+				border-right: 10px solid #fdcb6e;
+				border-radius: 3px;
+			}
+		}
+	}
+}
+
+.players-score {
+	list-style-type: none;
+	display: block;
+	@media (width < 900px) {
+		display: flex;
+		&__data {
+			margin-left: 5px;
+		}
+	}
+}

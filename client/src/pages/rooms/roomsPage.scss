@@ -1,0 +1,46 @@
+.start-form {
+	&__bottom-buttons {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-top: 20px;
+		margin-bottom: 10px;
+	}
+	&__create-room {
+		color: #4acfae;
+		text-transform: uppercase;
+		font-weight: bold;
+		margin: 20px 0 15px;
+		width: 250px;
+		background: none;
+		border: 2px solid #4acfae;
+		border-radius: 5px;
+		font-size: 14px;
+		padding: 7px 0 8px;
+		font-family: Helvetica, sans-serif;
+		cursor: pointer;
+		letter-spacing: 1px;
+		transition: background-color, color 0.5s ease, transform 0.25s ease;
+		&:hover {
+			transform: translateY(-2px);
+			color: hsl(214, 16%, 92%);
+			background-color: #4acfae;
+			transition: background-color, color 0.5s ease, transform 0.25s ease;
+		}
+	}
+	&__singleplayer {
+		width: 200px;
+		height: 25px;
+		background: none;
+		border: 1px solid #4b8add;
+		border-radius: 5px;
+		color: #4b8add;
+		transition: background-color, color 0.5s ease;
+		cursor: pointer;
+		&:hover {
+			background-color: #4b8add;
+			color: hsl(214, 16%, 92%);
+			transition: background-color, color 0.5s ease;
+		}
+	}
+}

@@ -1,0 +1,9 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+} 
+
+@font-face { src: url("./assets/fonts/roboto/roboto-v29-cyrillic-300.woff2") format("woff2"); font-family: "roboto-wt"; font-weight: 300; font-style: normal; }
+@font-face { src: url("./assets/fonts/roboto/roboto-v29-cyrillic-500.woff2") format("woff2"); font-family: "roboto-wt"; font-weight: 500; font-style: normal; }
+@font-face { src: url("./assets/fonts/roboto/roboto-v29-cyrillic-700.woff2") format("woff2"); font-family: "roboto-wt"; font-weight: 700; font-style: normal; }

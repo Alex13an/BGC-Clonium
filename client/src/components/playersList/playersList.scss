@@ -1,0 +1,68 @@
+.players-list {
+	&__label {
+		color: #F1FFE7;
+		font-size: 18px;
+		position: relative;
+		top: -40px;
+		left: 10px;
+		font-weight: 500;
+	}
+	&__wrapper {
+		margin-top: -40px;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		width: 80vw;
+		max-width: 650px;
+	}
+	&__container {
+		border-radius: 5px;
+		background: #4B8ADD;
+		height: 40px;
+		width: calc(50% - 30px);
+		margin: 10px;
+		color: #F1FFE7;
+		display: flex;
+		align-items: center;
+		padding-left: 15px;
+		transition: background 0.5s ease, transform .4s ease, opacity .5s ease, border .5s ease;
+		&:hover {
+			background: #4ACFAE;
+			transform: scale(1.03, 1.03);
+			transition: background 0.5s ease, transform .4s ease;
+		}
+		&_empty {
+			opacity: 0.5;
+			background: none;
+			border: 2px solid #4EC0E9;
+			pointer-events: none;
+		}
+	}
+	&__current {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		width: 28px;
+		height: 28px;
+		margin-left: auto;
+		margin-right: 10px;
+		font-weight: bold;
+		font-size: 15px;
+		user-select: none;
+		&_1 {
+			background-color: #d24032;
+		}
+		&_2 {
+			background-color: #1a5fb8;
+		}
+		&_3 {
+			background-color: #b4ffb6;
+			color: #333333;
+		}
+		&_4 {
+			background-color: #fffb65;
+			color: #333333;
+		}
+	}
+}

@@ -1,0 +1,81 @@
+.game-block {
+	font-size: 17px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	background-color: #293572;
+	border-radius: 3px;
+	color: #84b2d9;
+	user-select: none;
+	position: relative;
+	right: 50%;
+	top: 0;
+	transform: translateX(50%);
+	@media (width < 900px) {
+		right: 0;
+		transform: none;
+		margin-top: 20px;
+	}
+	&__cell {
+		width: 50px;
+		height: 50px;
+		border: 2px solid #a95fd1;
+		border-radius: 3px;
+		margin: 1px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&_active {
+			background-color: rgba(162, 155, 254, 0.3);
+		}
+		&_clickable {
+			cursor: pointer;
+		}
+	}
+	&__data {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		width: 30px;
+		height: 30px;
+		transition: transform .2s ease;
+		&:hover {
+			transition: transform .2s ease;
+			transform: scale(1.05, 1.05);
+		}
+	}
+	.player {
+		&-0 {
+			visibility: hidden;
+		}
+		&-1 {
+			visibility: visible;
+			background-color: #d24032;
+		}
+		&-2 {
+			visibility: visible;
+			background-color: #1a5fb8;
+		}
+		&-3 {
+			visibility: visible;
+			background-color: #b4ffb6;
+		}
+		&-4 {
+			visibility: visible;
+			background-color: #fffb65;
+		}
+	}
+}
+
+.debug {
+	position: fixed;
+	top: 10px;
+	left: auto;
+}
+
+.info-panel {
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: rgba($color: white, $alpha: .5);
+}

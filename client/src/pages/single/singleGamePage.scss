@@ -1,0 +1,73 @@
+.solo-game-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: #002650;
+	height: 100vh;
+}
+
+.solo-game-block {
+	font-size: 17px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	background-color: #293572;
+	color: #84b2d9;
+	user-select: none;
+	&__cell {
+		width: 50px;
+		height: 50px;
+		border: 2px solid #a95fd1;
+		border-radius: 3px;
+		margin: 1px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&_active {
+			background-color: rgba(200, 200, 200, 0.3);
+			cursor: pointer;
+		}
+	}
+	&__data {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		width: 30px;
+		height: 30px;
+	}
+	.player {
+		&-0 {
+			visibility: hidden;
+		}
+		&-1 {
+			visibility: visible;
+			background-color: #d24032;
+		}
+		&-2 {
+			visibility: visible;
+			background-color: #1a5fb8;
+		}
+		&-3 {
+			visibility: visible;
+			background-color: #b4ffb6;
+		}
+		&-4 {
+			visibility: visible;
+			background-color: #fffb65;
+		}
+	}
+}
+
+.debug {
+	position: fixed;
+	top: 10px;
+	left: auto;
+}
+
+.info-panel {
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: rgba($color: white, $alpha: .5);
+}
