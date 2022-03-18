@@ -4,7 +4,6 @@
   "main": "index.js",
   "license": "MIT",
 	"private": true,
-  "type": "module",
   "engines": { "node": "16.13.1" },
   "scripts": {
     "dev": "nodemon ./src/app.ts",
