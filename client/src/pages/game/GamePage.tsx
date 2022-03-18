@@ -24,6 +24,7 @@ const GamePage: FC = () => {
 	const [turn, setTurn] = useState(0)
 	const [isExpanding, setIsExpanding] = useState(false)
 	const [winner, setWinner] = useState<OPlayer>({} as OPlayer)
+  const [turned, setTurned] = useState(false)
 	const dispatch = useAppDispatch()
 
 	useEffect(() => {
@@ -60,6 +61,7 @@ const GamePage: FC = () => {
 			setPlayers(() => [...NewPlayers])
 			setTurn(() => NewTurn)
 			setIsExpanding(() => NewIsExpanding)
+      setTurned(false)
 		})
 		socket.on('gameWin', (winner: OPlayer) => {
 			setWinner(winner)
@@ -72,7 +74,9 @@ const GamePage: FC = () => {
 	}
 
 	const cellIncrement = (i: number, j:number) => {
+    if(turned) return
 		socket.emit('gameIncrement', gameId, i, j)
+    setTurned(true)
 	}
 
 	return (

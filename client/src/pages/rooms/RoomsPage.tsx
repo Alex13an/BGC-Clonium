@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import './roomsPage.scss'
 import { Link, useNavigate } from 'react-router-dom'
 import socket from '../../sockets/socket'
@@ -16,9 +16,10 @@ const RoomsPage: FC = () => {
 	const roomId = useInput('', {isEmpty: true})
 	const navigate = useNavigate()
 	const dispatch = useAppDispatch()
+  const [turned, setTurned] = useState(false)
 
 	const roomInitHandle = () => {
-		if (!socket || !username.value) return
+		if (!socket || !username.value || turned) return
 
 		const room = getRoomId()
 		socket.emit('roomInit', room, username.value, (res: {status: string, player: OPlayer}) => {
@@ -26,16 +27,18 @@ const RoomsPage: FC = () => {
 			dispatch(setGameData({player: res.player, roomId: room}))
 			navigate(`/game/${room}`)
 		})
+    setTurned(true)
 	}
 
 	const joinRoomHandle = () => {
-		if(!roomId.value || !username.value) return
+		if(!roomId.value || !username.value || turned) return
 
 		socket.emit('joinRoom', roomId.value, username.value, (response: {startError: string, player: OPlayer}) => {
 			if (response.startError) return alert(response.startError)
 			dispatch(setGameData({player: response.player, roomId: roomId.value}))
 			navigate(`/game/${roomId.value}`)
 		})
+    setTurned(true)
 	}
 
 	const buttonDirtyClick = () => {
