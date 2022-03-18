@@ -1,1 +1,1 @@
-web: node src/app.ts --env env=dev
+web: node src/app.ts 
