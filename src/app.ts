@@ -1,12 +1,12 @@
 import express from 'express'
 import { createServer } from 'http'
 import { Server } from 'socket.io'
-import cors from 'cors'
 import config from 'config'
+import path from 'path'
 import logger from './utils/logger'
 import sockets from './sockets';
 
-const port = config.get<number>('port')
+const port = process.env.PORT || config.get<number>('port')
 const host = config.get<string>('host')
 const corsOrigin = config.get<string>('corsOrigin')
 
@@ -23,9 +23,16 @@ const io = new Server(httpServer, {
 
 app.get('/', (_, res) => res.send('Server is Up!'))
 
-httpServer.listen(port, host, () => {
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
+
+httpServer.listen(port, () => {
 	logger.info('Server is listening')
-	logger.info(`http://${host}:${port}`)
+	logger.info(`${port}`)
 
 	sockets({ io })
 })

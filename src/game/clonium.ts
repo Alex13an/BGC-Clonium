@@ -1,6 +1,6 @@
 import { IPlayer, ICell, DeadCell } from '../models/models';
 import produce from 'immer'
-import { shuffleArray } from './../utils/arrayShuffle';
+import { shuffleArray } from '../utils/arrayShuffle';
 
 export class Clonium {
 	private _players: IPlayer[] = []

@@ -1,4 +1,3 @@
-import { Clonium } from "../game/clonium";
 
 export interface IPlayer {
 	id: number;

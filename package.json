@@ -5,7 +5,8 @@
   "license": "MIT",
 	"private": true,
   "scripts": {
-    "dev": "nodemon ./src/app.ts"
+    "dev": "nodemon ./src/app.ts",
+    "heroku-postbuild": "cd client && yarn install && yarn build"
   },
   "devDependencies": {
     "@types/config": "^0.0.41",
