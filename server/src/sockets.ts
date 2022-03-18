@@ -1,7 +1,6 @@
 import { Server, Socket } from "socket.io";
 import logger from "./utils/logger";
 import { Clonium } from "./game/clonium";
-import { IPlayer } from './models/models';
 
 enum EVENTS {
 	connection = 'connection',
@@ -106,6 +105,7 @@ function sockets({ io }: { io: Server}) {
 
 			if (gameRoom.turn === -1) {
 				io.in(roomId).emit(EVENTS.gameWin, gameRoom.winner)
+        return Rooms.delete(roomId) 
 			}
 
 			setTimeout(() => roomExpansion(roomId), 500)
@@ -117,7 +117,8 @@ function sockets({ io }: { io: Server}) {
 				gameRoom.increment(i, j)
 				io.in(roomId).emit(EVENTS.getGameData, gameRoom.gameGrid, gameRoom.players, gameRoom.turn, gameRoom.isExpanding)
 				if (gameRoom.turn === -1) {
-					return io.in(roomId).emit(EVENTS.gameWin, gameRoom.winner)
+          io.in(roomId).emit(EVENTS.gameWin, gameRoom.winner)
+          return Rooms.delete(roomId) 
 				}
 				if (gameRoom.gameGrid[i][j].value >= 4) {
 					gameRoom.isExpanding = true
@@ -137,10 +138,12 @@ function sockets({ io }: { io: Server}) {
 					room.defeatPlayer(socket.id) && io.in(roomId).emit(EVENTS.getGameData, room.gameGrid, room.players, room.turn, room.isExpanding)
 					if (room.turn === -1) {
 						io.in(roomId).emit(EVENTS.gameWin, room.winner)
+            Rooms.delete(roomId) 
 					}
 				} else {
 					room.removePlayer(socket.id) && io.in(roomId).emit(EVENTS.updatePlayers, room.players)
 				}
+        if (room.players.filter(player => player.isWinning === true).length < 1) Rooms.delete(roomId)
 			})
 		})
 
