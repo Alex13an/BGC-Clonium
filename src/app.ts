@@ -14,14 +14,23 @@ const app = express()
 
 const httpServer = createServer(app)
 
-const io = new Server(httpServer, {
-	cors: {
-		origin: corsOrigin,
-		credentials: true
-	}
-})
+const whitelist = ['http://localhost:3000', 'http://localhost:4000', 'https://bgc-clonium-game.herokuapp.com']
+const corsOptions = {
+  origin: function (origin: any, callback: any) {
+    console.log("** Origin of request " + origin)
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      console.log("Origin acceptable")
+      callback(null, true)
+    } else {
+      console.log("Origin rejected")
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
 
-app.get('/', (_, res) => res.send('Server is Up!'))
+const io = new Server(httpServer, {
+	cors: corsOptions
+})
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(path.basename(__dirname), 'client/build')));
