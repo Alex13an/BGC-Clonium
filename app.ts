@@ -3,8 +3,8 @@ import { createServer } from 'http'
 import { Server } from 'socket.io'
 import config from 'config'
 import path from 'path'
-import logger from './utils/logger'
-import sockets from './sockets';
+import logger from './src/utils/logger'
+import sockets from './src/sockets';
 
 const port = process.env.PORT || config.get<number>('port')
 const host = config.get<string>('host')
@@ -21,12 +21,11 @@ const io = new Server(httpServer, {
 	}
 })
 
-app.use(express.static(path.join(path.basename(__dirname), 'client/build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 app.get('*', function(req, res) {
-  res.sendFile(path.join(path.basename(__dirname), 'client/build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
-console.log(path.join(path.basename(__dirname), 'client/build', 'index.html'))
 
 httpServer.listen(port, () => {
 	logger.info('Server is listening')
