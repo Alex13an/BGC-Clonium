@@ -1,5 +1,5 @@
 export default {
-	corsOrigin: 'http://localhost:3000',
+	corsOrigin: 'https://bgc-clonium-game.herokuapp.com',
 	port: 4000,
 	host: 'localhost',
 }

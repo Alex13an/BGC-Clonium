@@ -9,7 +9,8 @@
   },
   "scripts": {
     "dev": "nodemon ./src/app.ts",
-    "postinstall": "tsc --build && cd client && yarn install && yarn build"
+    "postinstall": "tsc --build",
+    "heroku-postbuild": "cd client && yarn install && yarn build"
   },
   "devDependencies": {
     "@types/config": "^0.0.41",
