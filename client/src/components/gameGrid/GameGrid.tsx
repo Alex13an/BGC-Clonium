@@ -24,7 +24,7 @@ const GameGrid: FC<GameGridProps> = ({grid, turn, isExpanding, increment}) => {
 				rows.map((col, j) => 
 					<div 
 						className={
-							`${turn > 0 && grid[i][j].ownerId === turn && !isExpanding ? 
+             `${turn > 0 && grid[i][j].ownerId === turn && !isExpanding ? 
 							'game-block__cell game-block__cell_active' 
 							:
 							'game-block__cell'} ${
